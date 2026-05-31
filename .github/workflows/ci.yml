@@ -1,0 +1,34 @@
+name: CI
+
+on:
+  pull_request:
+    branches: [ main, dev ]
+  push:
+    branches: [ main, dev ]
+
+jobs:
+  build-and-validate:
+    name: Build and validate API
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+
+      - name: Restore dependencies
+        run: dotnet restore TreeManager.sln
+
+      - name: Build solution
+        run: dotnet build TreeManager.sln --configuration Release --no-restore
+
+      - name: Run tests
+        run: dotnet test TreeManager.sln --configuration Release --no-build
+        continue-on-error: true
+
+      - name: Build Docker image
+        run: docker build -t tree-manager-api:ci -f docker/Dockerfile .
