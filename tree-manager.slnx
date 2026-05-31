@@ -1,0 +1,8 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/TreeManager.Api/TreeManager.Api.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/TreeManager.Tests/TreeManager.Tests.csproj" />
+  </Folder>
+</Solution>
