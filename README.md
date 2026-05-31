@@ -17,5 +17,25 @@ El proyecto funciona como un laboratorio DevOps para practicar desarrollo backen
 
 La primera versión expone un endpoint operativo de salud:
 
-```http
+```bash 
 GET /health
+```
+
+## Ejecutar con Docker Compose
+
+Construir y levantar el servicio:
+
+```bash 
+docker compose up --build
+```
+
+Verificar el health check:
+
+```bash
+curl http://localhost:8080/health
+````
+
+Detener los servicios:
+```bash
+docker compose down
+```

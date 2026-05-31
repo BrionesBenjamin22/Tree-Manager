@@ -1,0 +1,13 @@
+services:
+  tree-manager-api:
+    build:
+      context: .
+      dockerfile: docker/Dockerfile
+    image: tree-manager-api:dev
+    container_name: tree-manager-api
+    ports:
+      - "8080:8080"
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_URLS: http://+:8080
+    restart: unless-stopped
