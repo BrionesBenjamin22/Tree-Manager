@@ -26,13 +26,13 @@ jobs:
           dotnet-version: '8.0.x'
 
       - name: Restore dependencies
-        run: dotnet restore tree-manager.sln
+        run: dotnet restore tree-manager.slnx
 
       - name: Build solution
-        run: dotnet build tree-manager.sln --configuration Release --no-restore
+        run: dotnet build tree-manager.slnx --configuration Release --no-restore
 
       - name: Build Docker image
         run: docker build -t tree-manager-api:ci -f docker/Dockerfile .
 
       - name: Run tests
-        run: dotnet test tree-manager.sln --configuration Release --no-build
+        run: dotnet test tree-manager.slnx --configuration Release --no-build
