@@ -39,3 +39,21 @@ Detener los servicios:
 ```bash
 docker compose down
 ```
+
+## CI/CD
+
+El proyecto utiliza GitHub Actions para validar automáticamente la aplicación ante Pull Requests y cambios sobre ramas principales.
+
+El pipeline inicial ejecuta:
+
+- Restore de dependencias .NET.
+- Build de la solución.
+- Validación de construcción de imagen Docker.
+
+Workflow:
+
+```text
+
+.github/workflows/ci.yml
+
+``` 
